@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Multani&display=swap');
+
+
+*{
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+p, a {
+  font-family: 'Noto Sans Multani', sans-serif;
+}
+
+.swal2-container {
+  font-family: 'Noto Sans Multani', sans-serif;
+  code {
+    font-family: monospace;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0 4px;
+    border-radius: 4px;
+  }
+}
