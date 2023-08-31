@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgxIndexedDBService} from "ngx-indexed-db";
+import {LoginListenerService} from "./services/login-listener.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,11 +10,19 @@ import {NgxIndexedDBService} from "ngx-indexed-db";
 })
 export class AppComponent implements OnInit {
   title = 'ing-sistemas-yaelis';
+  isLogedIn = false;
 
-  constructor(private dbService: NgxIndexedDBService) {}
+  constructor(
+    private readonly dbService: NgxIndexedDBService,
+    private readonly loginService: LoginListenerService,
+    private readonly router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.populateInitialData();
+    this.loginService.isLoggedIn().subscribe((isLoggedIn) => {
+      this.isLogedIn = isLoggedIn;
+    });
   }
 
   populateInitialData(): void {

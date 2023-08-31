@@ -14,6 +14,7 @@ import { dbConfig } from './config/db.config';
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import { NgVarDirective } from './directives/ng-var.directive';
 import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HomeComponent } from './components/home/home.component';
     UserNameErrorMessagePipe,
     NgVarDirective,
     HomeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

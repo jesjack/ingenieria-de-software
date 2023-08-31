@@ -5,6 +5,7 @@ import {NgxIndexedDBService} from "ngx-indexed-db";
 import Swal from "sweetalert2";
 import {User} from "../../config/db.config";
 import {Router} from "@angular/router";
+import {LoginListenerService} from "../../services/login-listener.service";
 
 @Component({
   selector: 'app-login',
@@ -17,22 +18,13 @@ export class LoginComponent {
 
   constructor(
     public readonly swalTargets: SwalPortalTargets,
-    private readonly dbService: NgxIndexedDBService,
+    private readonly loginService: LoginListenerService,
     private readonly router: Router,
   ) { }
 
   startLogin($event: MouseEvent) {
-    this.dbService.getByIndex<User>('users', 'username', this.username).subscribe((user) => {
-      if (!user) {
-        void Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: `El usuario <code>${this.username}</code> no existe.`,
-        });
-        return;
-      }
-
-      if (user.password !== this.password) {
+    this.loginService.log_in(this.username, this.password, (wrongPassword) => {
+      if (wrongPassword) {
         void Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -41,7 +33,6 @@ export class LoginComponent {
         return;
       }
 
-      sessionStorage.setItem('user', JSON.stringify(user));
       this.router.navigate(['/home']).catch(console.error)
     });
   }

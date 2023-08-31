@@ -1,2 +1,6 @@
-<!-- La realidad es solo una dosis de sufrimiento -->
-<router-outlet></router-outlet>
+<div class="ups-container">
+  <app-navbar *ngIf="isLogedIn"></app-navbar>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

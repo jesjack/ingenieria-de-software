@@ -18,6 +18,17 @@ export const dbConfig: DBConfig = {
         { name: 'password', keypath: 'password', options: { unique: false } }
       ],
     },
+    {
+      store: 'inventory',
+      storeConfig: { keyPath: 'id', autoIncrement: true },
+      storeSchema: [ // nombre, precio, descripción, cantidad, precio de proveedor
+        { name: 'name', keypath: 'name', options: { unique: true } },
+        { name: 'price', keypath: 'price', options: { unique: false } },
+        { name: 'description', keypath: 'description', options: { unique: false } },
+        { name: 'count', keypath: 'count', options: { unique: false } },
+        { name: 'provider_price', keypath: 'provider_price', options: { unique: false } }
+      ],
+    }
   ]
 }
 
@@ -30,4 +41,12 @@ export interface User {
   address: string;
   username: string;
   password: string;
+}
+
+export interface Product {
+  name: string;
+  price: number;
+  description: string;
+  count: number;
+  provider_price: number;
 }
