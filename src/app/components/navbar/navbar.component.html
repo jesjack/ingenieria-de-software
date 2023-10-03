@@ -17,6 +17,9 @@
       <nav class="menu open-current-submenu">
         <ul>
           <li class="menu-header"><span> GENERAL </span></li>
+          <app-nav-item routerLink="/ventas" [icon]="faCashRegister">Ventas</app-nav-item>
+          <app-nav-item routerLink="/inventario" [icon]="faBoxes">Inventario</app-nav-item>
+          <app-nav-item routerLink="/empleados" [icon]="faUsers">Empleados</app-nav-item>
           <li class="menu-item sub-menu" #subMenuItem>
             <a class="subA" #subA>
                     <span class="menu-icon">
@@ -200,18 +203,7 @@
             </div>
           </li>
           <li class="menu-header" style="padding-top: 20px"><span> EXTRA </span></li>
-          <li class="menu-item">
-            <a href="#">
-                    <span class="menu-icon">
-                      <!-- <i class="ri-book-2-fill"></i> -->
-                      <fa-icon [icon]="faBook"></fa-icon>
-                    </span>
-              <span class="menu-title">Documentation</span>
-              <span class="menu-suffix">
-                      <span class="badge secondary">Beta</span>
-                    </span>
-            </a>
-          </li>
+          <!-- <app-nav-item routerLink="/home" [icon]="faCashRegister">Ventas</app-nav-item> -->
           <li class="menu-item">
             <a href="#">
                     <span class="menu-icon">

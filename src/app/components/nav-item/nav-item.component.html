@@ -1,0 +1,16 @@
+<li class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+  <a [routerLink]="routerLink">
+    <span class="menu-icon">
+      <!-- <i class="ri-book-2-fill"></i> -->
+      <fa-icon [icon]="icon"></fa-icon>
+    </span>
+    <span class="menu-title">
+      <ng-content></ng-content>
+    </span>
+    <!--
+    <span class="menu-suffix">
+      <span class="badge secondary">Beta</span>
+    </span>
+    -->
+  </a>
+</li>

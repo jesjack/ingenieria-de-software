@@ -2,13 +2,13 @@ import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, View
 import {createPopper, Instance} from "@popperjs/core";
 import {
   faAngleLeft,
-  faBook,
-  faCalendar,
+  faBook, faBoxes,
+  faCalendar, faCashRegister,
   faChartBar,
   faGem,
   faGlobe,
   faPaintBrush, faServer,
-  faShoppingCart
+  faShoppingCart, faUsers
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -182,6 +182,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   protected readonly faCalendar = faCalendar;
   protected readonly faServer = faServer;
   protected readonly faAngleLeft = faAngleLeft;
+  protected readonly faCashRegister = faCashRegister;
+  protected readonly faBoxes = faBoxes;
+  protected readonly faUsers = faUsers;
 }
 
 

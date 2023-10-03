@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainComponent } from './components/main/main.component';
-import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './routes/main/main.component';
+import { LoginComponent } from './routes/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserNameErrorMessagePipe } from './pipes/user-name-error-message.pipe';
@@ -13,8 +13,9 @@ import {NgxIndexedDBModule} from "ngx-indexed-db";
 import { dbConfig } from './config/db.config';
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import { NgVarDirective } from './directives/ng-var.directive';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './routes/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavItemComponent } from './components/nav-item/nav-item.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NgVarDirective,
     HomeComponent,
     NavbarComponent,
+    NavItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,7 @@ export class LoginListenerService {
   log_in(username: string, password: string, callback: (wrongPassword: boolean) => void) {
 
     this.dbService.getByIndex<User>('users', 'username', username).subscribe((user) => {
+      console.log(password, user.password)
       if (!user || user.password !== password) {
         callback(true);
         return;
