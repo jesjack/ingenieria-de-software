@@ -8,7 +8,7 @@ import {
   faGem,
   faGlobe,
   faPaintBrush, faServer,
-  faShoppingCart, faUsers
+  faShoppingCart, faSignOut, faUsers
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -185,6 +185,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   protected readonly faCashRegister = faCashRegister;
   protected readonly faBoxes = faBoxes;
   protected readonly faUsers = faUsers;
+  protected readonly faSignOut = faSignOut;
 }
 
 
