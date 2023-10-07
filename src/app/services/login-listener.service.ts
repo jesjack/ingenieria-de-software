@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {NgxIndexedDBService} from "ngx-indexed-db";
-import {User} from "../config/db.config";
+import {DbService} from "../database/db.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,7 @@ import {User} from "../config/db.config";
 export class LoginListenerService {
 
   constructor(
-    private readonly dbService: NgxIndexedDBService,
+    private readonly dbService: DbService,
   ) {
     this.loggedInSubject.next(!!sessionStorage.getItem('user'));
   }
@@ -18,21 +17,24 @@ export class LoginListenerService {
 
   log_in(username: string, password: string, callback: (wrongPassword: boolean) => void) {
 
-    this.dbService.getByIndex<User>('users', 'username', username).subscribe((user) => {
-      console.log(password, user.password)
-      if (!user || user.password !== password) {
+    this.dbService.Usuarios.where({
+      Usuario: username,
+      Contrasena: password
+    }).toArray().then((users) => {
+      if (users.length === 0) {
         callback(true);
         return;
       }
 
-      sessionStorage.setItem('user', JSON.stringify(user));
+      sessionStorage.setItem('user', JSON.stringify(users[0]));
       this.loggedInSubject.next(true);
       callback(false);
-    });
+    })
+
   }
 
   log_out() {
-
+    sessionStorage.removeItem('user');
     this.loggedInSubject.next(false);
   }
 

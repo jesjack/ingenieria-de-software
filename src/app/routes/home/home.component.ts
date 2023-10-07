@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Subject, takeUntil} from "rxjs";
 import {Router} from "@angular/router";
 import {LoginListenerService} from "../../services/login-listener.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-home',
@@ -24,5 +25,6 @@ export class HomeComponent {
         this.destroyed$.next();
         this.destroyed$.complete();
       });
+
   }
 }

@@ -1,0 +1,24 @@
+<div class="ventas-main">
+  <h1>Gestión de ventas</h1>
+
+  <button class="new-venta">Nueva venta</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let venta of ventas">
+      <td>{{venta.cantidad}}</td>
+      <td>{{venta.producto | truncate : 10}}</td>
+      <td>{{venta.precio | currency}}</td>
+      <td>{{venta.precio * venta.cantidad | currency}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

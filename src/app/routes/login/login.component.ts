@@ -3,7 +3,6 @@ import {faCheck, faCoffee, faWarning} from '@fortawesome/free-solid-svg-icons';
 import {SwalPortalTargets} from "@sweetalert2/ngx-sweetalert2";
 import {NgxIndexedDBService} from "ngx-indexed-db";
 import Swal from "sweetalert2";
-import {User} from "../../config/db.config";
 import {Router} from "@angular/router";
 import {LoginListenerService} from "../../services/login-listener.service";
 

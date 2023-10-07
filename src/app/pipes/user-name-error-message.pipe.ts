@@ -1,14 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {NgxIndexedDBService} from "ngx-indexed-db";
-import {map, Observable} from "rxjs";
-import {User} from "../config/db.config";
+import {from, map, Observable} from "rxjs";
+import { DbService } from '../database/db.service';
 
 @Pipe({
   name: 'userNameErrorMessage'
 })
 export class UserNameErrorMessagePipe implements PipeTransform {
 
-  constructor(private dbService: NgxIndexedDBService) {
+  constructor(private dbService: DbService) {
   }
 
   transform(value: string, ...args: unknown[]) {
@@ -24,8 +23,10 @@ export class UserNameErrorMessagePipe implements PipeTransform {
       });
     }
 
-    return this.dbService.getByIndex('users', 'username', value).pipe(map((user): string[] => {
-      if (!user) {
+    return from(this.dbService.Usuarios.where({
+      Usuario: value,
+    }).toArray()).pipe(map((users): string[] => {
+      if (users.length === 0) {
         return [`El usuario <code>${value}</code> no existe.`];
       } else {
         return [];

@@ -1,0 +1,63 @@
+<div class="ventas-main">
+  <h1>Empleados</h1>
+
+  <button class="new-venta" [swal]="nuevoEmpleadoSwal">Nuevo empleado</button>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Horario</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let empleado of empleados">
+      <td>{{empleado.Nombre}}</td>
+      <td>{{empleado.IdUsuario | usuarioHorario | async}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<swal #nuevoEmpleadoSwal titleText="Nuevo empleado" [showCancelButton]="true" [customClass]="{container: 'zIndex999'}">
+  <div *swalPortal="swalTargets.content">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="nuevoEmpleadoNombre">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Apellidos</mat-label>
+      <input matInput [(ngModel)]="nuevoEmpleadoApellidos">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Puesto</mat-label>
+      <mat-select [(ngModel)]="nuevoEmpleadoPuesto">
+        <mat-option *ngFor="let puesto of PUESTOS" [value]="puesto">{{puesto}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="nuevoEmpleadoFechaNacimiento">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Teléfono</mat-label>
+      <input matInput [(ngModel)]="nuevoEmpleadoTelefono">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Dirección</mat-label>
+      <input matInput [(ngModel)]="nuevoEmpleadoDireccion">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput [(ngModel)]="nuevoEmpleadoUsername">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput [(ngModel)]="nuevoEmpleadoPassword">
+    </mat-form-field>
+
+  </div>
+</swal>
