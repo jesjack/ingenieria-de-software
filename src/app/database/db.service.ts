@@ -43,11 +43,12 @@ export class DbService extends Dexie {
       Puesto: 'Administrador'
     }).count().then((count) => {
       if (count === 0) {
+        const d = '01/01/2000';
         this.Usuarios.add({
           Nombre: 'Admin',
           Apellidos: 'Admin',
           Puesto: 'Administrador',
-          FechaNacimiento: '01/01/2000',
+          FechaNacimiento: new Date(+d.split('/')[2], +d.split('/')[1] - 1, +d.split('/')[0]),
           Telefono: '0000000000',
           Direccion: 'Admin',
           Usuario: 'admin',
@@ -83,7 +84,7 @@ export interface Usuarios {
   Nombre: string;
   Apellidos: string;
   Puesto: 'Dueña' | 'Empleado' | 'Administrador';
-  FechaNacimiento: string;
+  FechaNacimiento: Date;
   Telefono: string;
   Direccion: string;
   Usuario: string;

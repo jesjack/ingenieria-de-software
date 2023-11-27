@@ -8,19 +8,29 @@
     <tr>
       <th>Nombre</th>
       <th>Horario</th>
+      <th>Opción</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let empleado of empleados">
       <td>{{empleado.Nombre}}</td>
       <td>{{empleado.IdUsuario | usuarioHorario | async}}</td>
+      <td>
+        <button mat-flat-button color="warn" (click)="deleteEmpleado(empleado.IdUsuario)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+        <button mat-flat-button color="primary" [swal]="configHorariosSwal">
+          <fa-icon [icon]="faCalendar"></fa-icon>
+        </button>
+      </td>
     </tr>
     </tbody>
   </table>
 </div>
 
 
-<swal #nuevoEmpleadoSwal titleText="Nuevo empleado" [showCancelButton]="true" [customClass]="{container: 'zIndex999'}">
+<swal #nuevoEmpleadoSwal titleText="Nuevo empleado" [showCancelButton]="true" [customClass]="{container: 'zIndex999'}"
+(confirm)="nuevoEmpleadoConfirm($event)">
   <div *swalPortal="swalTargets.content">
     <mat-form-field>
       <mat-label>Nombre</mat-label>
@@ -59,5 +69,16 @@
       <input matInput [(ngModel)]="nuevoEmpleadoPassword">
     </mat-form-field>
 
+  </div>
+</swal>
+
+<swal #configHorariosSwal titleText="Configurar horarios" [showCancelButton]="true" [customClass]="{container: 'zIndex999'}" (confirm)="configHorariosConfirm($event)">
+  <div *swalPortal="swalTargets.content">
+    <mat-form-field>
+      <mat-label>Horario</mat-label>
+      <mat-select [(ngModel)]="configHorariosHorario">
+        <mat-option *ngFor="let horario of horarios" [value]="horario.IdHorario">{{horario.Nombre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </swal>
