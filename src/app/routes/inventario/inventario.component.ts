@@ -121,6 +121,8 @@ export class InventarioComponent implements OnInit {
           <tr>
             <th>Precio</th><td>${producto.Precio}</td>
           </tr>
+
+          <!-- vamos a agregar un nuevo cliente -->
           <tr>
             <th>Descripción</th><td>${producto.Descripcion}</td>
           </tr>
