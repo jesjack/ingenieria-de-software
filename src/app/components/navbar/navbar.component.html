@@ -18,8 +18,8 @@
         <ul>
           <li class="menu-header"><span> GENERAL </span></li>
           <app-nav-item routerLink="/ventas" [icon]="faCashRegister">Ventas</app-nav-item>
-          <app-nav-item routerLink="/inventario" [icon]="faBoxes">Inventario</app-nav-item>
-          <app-nav-item routerLink="/empleados" [icon]="faUsers">Empleados</app-nav-item>
+          <app-nav-item routerLink="/inventario" [icon]="faBoxes" *ngIf="showInventarioButton">Inventario</app-nav-item>
+          <app-nav-item routerLink="/empleados" [icon]="faUsers" *ngIf="showEmpleadosButton">Empleados</app-nav-item>
           <app-nav-item routerLink="/logout" [icon]="faSignOut">Cerrar sesión</app-nav-item>
         </ul>
       </nav>

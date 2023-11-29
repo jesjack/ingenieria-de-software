@@ -1,1 +1,55 @@
-<p>inventario works!</p>
+<div class="productos-main">
+  <h1>Gestión de inventario</h1>
+
+  <button class="new-producto" [swal]="nuevoProductoSwal">Nuevo producto</button>
+
+  <table>
+    <thead>
+    <tr>
+<!--      <th>#</th>-->
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let producto of productos" (contextmenu)="contextTupleProducto($event, producto)">
+<!--      <td>{{producto.id}}</td>-->
+      <td>{{producto.NombreProducto}}</td>
+      <td>{{producto.Precio}}</td>
+      <td>{{producto.Cantidad}}</td>
+      <td>
+<!--        <button class="edit-producto" [swal]="editarProductoSwal" (click)="editarProducto(producto)">Editar</button>-->
+<!--        <button class="delete-producto" [swal]="eliminarProductoSwal" (click)="eliminarProducto(producto)">Eliminar</button>-->
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<swal #nuevoProductoSwal titleText="Nuevo empleado" [showCancelButton]="true" [customClass]="{container: 'zIndex999'}"
+      (confirm)="nuevoProductoConfirm($event)">
+  <div *swalPortal="swalTargets.content">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="nuevoProductoNombre">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Precio</mat-label>
+      <input matInput [(ngModel)]="nuevoProductoPrecio" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descripcion</mat-label>
+      <textarea matInput [(ngModel)]="nuevoProductoDescripcion"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cantidad</mat-label>
+      <input matInput [(ngModel)]="nuevoProductoCantidad" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Precio proveedor</mat-label>
+      <input matInput [(ngModel)]="nuevoProductoPrecioProveedor" type="number">
+    </mat-form-field>
+
+  </div>
+</swal>

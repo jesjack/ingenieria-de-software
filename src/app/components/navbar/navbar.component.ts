@@ -10,6 +10,7 @@ import {
   faPaintBrush, faServer,
   faShoppingCart, faSignOut, faUsers
 } from "@fortawesome/free-solid-svg-icons";
+import {UserLoggedService} from "../../services/user-logged.service";
 
 @Component({
   selector: 'app-navbar',
@@ -27,7 +28,12 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   // document.querySelectorAll(".menu-item.sub-menu.open")
   @ViewChildren('menu-item sub-menu open', { read: ElementRef }) menuItemsSubMenusOpen!: QueryList<ElementRef>;
 
-  constructor() {
+  tipoUsuario: string = this.userLoggedService.getUserLogged()?.Puesto || '';
+  showEmpleadosButton: boolean = this.tipoUsuario === 'Administrador' || this.tipoUsuario === 'Dueña';
+  showInventarioButton: boolean = this.tipoUsuario === 'Administrador' || this.tipoUsuario === 'Dueña';
+  constructor(
+    private readonly userLoggedService: UserLoggedService,
+  ) {
   }
   ngOnInit() {
 
